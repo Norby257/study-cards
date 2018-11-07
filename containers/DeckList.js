@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import {View, TouchableOpacity, Text, Platform, StyleSheet} from 'react-native'
 import {Ionicons} from '@expo/vector-icons'
-import {Deck} from '../components/Deck'
+import Deck from '../components/Deck'
+import {white, purple} from '../utils/colors'
 
 class DeckList extends Component {
     render() {

@@ -1,50 +1,58 @@
 import React, {Component} from 'react'
 import {View, TouchableOpacity, Text, Platform, StyleSheet} from 'react-native'
 import {Ionicons} from '@expo/vector-icons'
-import {white, purple} from '../utils/colors'
+import {white, purple, green} from '../utils/colors' 
 
-function AddCard ({onPress}) {
+//   other functions to render buttons 
+//   incorrect button - RED 
+//   correct button - GREEN 
+
+function CorrectButton({onPress}) {
     return (
         <TouchableOpacity
-       onPress={onPress} 
-       style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}>
-       
-        <Text style={styles.submitBtnTxt}> Add Card </Text>
-        </TouchableOpacity>
-
-    )
-}
-
-function StartQuiz ({onPress}) {
-    return (
-        <TouchableOpacity
-       onPress={onPress} 
-       style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}>
-       
-        <Text style={styles.submitBtnTxt}> Start Quiz </Text>
-        </TouchableOpacity>
+        onPress={onPress} 
+        style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}>
+        
+         <Text style={styles.submitBtnTxt}> Correct </Text>
+         </TouchableOpacity>
 
     )
 }
 
 
-class Deck extends Component {
+function IncorrectButton({onPress}) {
+    return (
+        <TouchableOpacity
+       onPress={onPress} 
+       style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}>
+       
+        <Text style={styles.submitBtnTxt}> Incorrect </Text>
+        </TouchableOpacity>
+
+    )
+
+}
+
+class Quiz extends Component {
     render() {
         return (
             <View style={styles.container}> 
-                <Text> Deck Name </Text>
-                <Text> Number of cards </Text>
-                <View>
-                <AddCard />
-                <StartQuiz />
-                </View>
-            </View> 
+            <Text> Question </Text>
+            <Text> Answer </Text>
+            <View>
+            <CorrectButton />
+            <IncorrectButton />
+            </View>
+        </View> 
+
         )
     }
-    
 
-    }
-    
+}
+
+
+// style sheet 
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -81,4 +89,8 @@ const styles = StyleSheet.create({
     
 })
 
-export default Deck
+
+
+// export component 
+
+export default Quiz
