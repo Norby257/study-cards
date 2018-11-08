@@ -18,14 +18,17 @@ import {
 
 import DeckList from './containers/DeckList'
 import Quiz from './components/Quiz'
+import NewDeck from './components/NewDeck'
+import NewQuestion from './components/NewQuestion'
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={{ flex: 1}}>
-        <View style={{height: 20}}>
+        <View style={{height: 20, flex: 1}}>
+        <NewQuestion />
         
-        <Quiz />
+       
         </View>
       </View>
     );
