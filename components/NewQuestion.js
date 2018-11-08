@@ -63,16 +63,16 @@ class NewQuestion extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style={styles.row}>
+                <View>
                     <AddQuestion />
 
                 </View>
-                <View style={styles.row}>
+                <View >
                     <AddAnswer />
                 </View>
 
-                <View style={styles.row}>
-                    <SubmitNewQuestion/>
+                <View>
+                    <SubmitNewQuestion style={styles.iosSubmitBtn}/>
                 </View>
 
             </View>
@@ -99,7 +99,8 @@ const styles = StyleSheet.create({
         borderRadius: 7, 
         height: 45, 
         marginLeft: 40,
-        marginRight: 40
+        marginRight: 40,
+        marginBottom: 20
     },
 
     submitBtnTxt: {
