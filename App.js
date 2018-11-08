@@ -17,6 +17,7 @@ import {
 } from 'react-native'
 
 import DeckList from './containers/DeckList'
+import Deck from './components/Deck'
 import Quiz from './components/Quiz'
 import NewDeck from './components/NewDeck'
 import NewQuestion from './components/NewQuestion'
@@ -26,7 +27,9 @@ export default class App extends React.Component {
     return (
       <View style={{ flex: 1}}>
         <View style={{height: 20, flex: 1}}>
-        <NewQuestion />
+        <NewDeck />
+        
+       
         
        
         </View>
