@@ -37,12 +37,12 @@ class NewDeck extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.row}>
-          <Text> What is the title of your new deck? </Text>
+          <Text style={{borderColor: 'gray'}}> What is the title of your new deck? </Text>
         </View>
         <View style={styles.row}>
           <TextInput
-            style={{ flex: 1, height: 40, backgroundColor: "red", alignItems: "center" }}
-            placeholder="Title"
+            style={{ flex: 1, height: 40, borderColor: 'gray', borderWidth: 1}}
+            placeholder="Title of Deck"
 
             //   onChangeText={(text) => this.setState({text})}
           />

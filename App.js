@@ -27,7 +27,7 @@ export default class App extends React.Component {
     return (
       <View style={{ flex: 1}}>
         <View style={{height: 20, flex: 1}}>
-        <NewDeck />
+        <NewQuestion />
         
        
         
