@@ -9,15 +9,17 @@ import {white, purple} from '../utils/colors'
 function AddQuestion({onChange}) {
     return (
         <View style={{padding: 10}}>
+        
         <TextInput
-          style={{height: 40}}
           placeholder="enter your question here!"
           onChangeText={(text) => this.setState({text})}
+          
+       
+          
         />
-        <Text style={{padding: 10, fontSize: 42}}>
-          {/* {this.state.text.split(' ').map((word) => word && '🍕').join(' ')} */}
-        </Text>
-      </View>
+         </View>
+       
+     
     )
 }
 
@@ -28,9 +30,9 @@ function AddAnswer({onChange}) {
     return (
         <View style={{padding: 10}}>
         <TextInput
-          style={{height: 40}}
           placeholder="enter your answer here!"
           onChangeText={(text) => this.setState({text})}
+          
         />
         <Text style={{padding: 10, fontSize: 42}}>
           {/* {this.state.text.split(' ').map((word) => word && '🍕').join(' ')} */}
@@ -64,11 +66,15 @@ class NewQuestion extends Component {
         return (
             <View style={styles.container}>
                 <View>
-                    <AddQuestion />
+                    <AddQuestion
+                        style={{ flex: 1, height: 40, borderColor: 'gray', borderWidth: 1}}              
+                         />
 
                 </View>
                 <View >
-                    <AddAnswer />
+                    <AddAnswer 
+                            
+                    />
                 </View>
 
                 <View>
