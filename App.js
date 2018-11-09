@@ -16,22 +16,28 @@ import {
   Slider 
 } from 'react-native'
 
+import {createBottomTabNavigation, createBottomTabNavigator} from 'react-navigation'
+
 import DeckList from './containers/DeckList'
 import Deck from './components/Deck'
 import Quiz from './components/Quiz'
 import NewDeck from './components/NewDeck'
 import NewQuestion from './components/NewQuestion'
 
+const Tabs = createBottomTabNavigator({
+  DeckList : {
+    screen: DeckList
+  },
+  Deck: {
+    screen: Deck
+  }
+})
 export default class App extends React.Component {
   render() {
     return (
       <View style={{ flex: 1}}>
         <View style={{height: 20, flex: 1}}>
-        <NewQuestion />
-        
-       
-        
-       
+        <Tabs />
         </View>
       </View>
     );
