@@ -6,13 +6,31 @@ import {
   Platform,
   StyleSheet
 } from "react-native"
+import {createStackNavigator} from 'react-navigation'
+import NewQuestion from './NewQuestion'
+import Quiz from './Quiz'
 import { Ionicons } from "@expo/vector-icons"
 import { white, purple } from "../utils/colors"
 
-function AddCard({ onPress }) {
+//   createStackNavigator is hre 
+
+const Stack = createStackNavigator({
+  AddCard: {
+    screen: NewQuestion
+  },
+
+  Quiz: {
+    screen: Quiz
+  }
+})
+
+function AddCard  ({ onPress }) {
+  
   return (
     <TouchableOpacity
-      onPress={onPress}
+      // onPress={onPress}
+      onPress={()=>
+      navigate('Add Card')}
       style={
         Platform.OS === "ios" ? styles.iosSubmitBtn : styles.androidSubmitBtn
       }
@@ -20,6 +38,7 @@ function AddCard({ onPress }) {
       <Text style={styles.submitBtnTxt}> Add Card </Text>
     </TouchableOpacity>
   )
+
 }
 
 function StartQuiz({ onPress }) {
@@ -37,6 +56,7 @@ function StartQuiz({ onPress }) {
 
 class Deck extends Component {
   render() {
+    const {navigate} = this.props.navigation;
     return (
       <View style={styles.container}>
         <View style={(styles.row, styles.center)}>
