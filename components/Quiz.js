@@ -41,6 +41,8 @@ function IncorrectButton({ onPress }) {
 
 class Quiz extends Component {
   render() {
+
+    const {navigation} = this.props 
     return (
       <View style={styles.container}>
         <View style={styles.row}>
