@@ -6,31 +6,20 @@ import {
   Platform,
   StyleSheet
 } from "react-native"
-import {createStackNavigator} from 'react-navigation'
 import NewQuestion from './NewQuestion'
 import Quiz from './Quiz'
 import { Ionicons } from "@expo/vector-icons"
 import { white, purple } from "../utils/colors"
 
-//   createStackNavigator is hre 
 
-const Stack = createStackNavigator({
-  AddCard: {
-    screen: NewQuestion
-  },
 
-  Quiz: {
-    screen: Quiz
-  }
-})
 
-function AddCard  ({ onPress }) {
+function AddCard  ({ onPress}) {
   
   return (
-    <TouchableOpacity
-      // onPress={onPress}
-      onPress={()=>
-      navigate('Add Card')}
+    <TouchableOpacity 
+   
+      
       style={
         Platform.OS === "ios" ? styles.iosSubmitBtn : styles.androidSubmitBtn
       }
@@ -41,10 +30,10 @@ function AddCard  ({ onPress }) {
 
 }
 
-function StartQuiz({ onPress }) {
+function StartQuiz({ onPress  }) {
   return (
     <TouchableOpacity
-      onPress={onPress}
+
       style={
         Platform.OS === "ios" ? styles.iosSubmitBtn : styles.androidSubmitBtn
       }
@@ -53,6 +42,8 @@ function StartQuiz({ onPress }) {
     </TouchableOpacity>
   )
 }
+
+//   create Stack object here  
 
 class Deck extends Component {
   render() {
@@ -65,10 +56,15 @@ class Deck extends Component {
         </View>
 
         <View>
-          <AddCard style={styles.iosSubmitBtn} />
+          <AddCard style={styles.iosSubmitBtn}
+          onPress={()=> console.log("ADD CARD CLCICKED")}
+          onPress={() => this.props.navigation.navigate(
+            'NewQuestion'
+          )} />
         </View>
         <View>
-          <StartQuiz style={styles.iosSubmitBtn} />
+          <StartQuiz style={styles.iosSubmitBtn} 
+          onPress={()=> this.props.navigation.navigate('Quiz')}/>
         </View>
       </View>
     )
