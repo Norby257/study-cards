@@ -1,7 +1,8 @@
 // all library and component imports go here 
 // when you add navigation, install react-navigation 
 import React from 'react';
-import {Ionicons, FontAwesome} from '@expo/vector-icons'
+import {Ionicons, FontAwesome, MaterialCommunityIcons} from '@expo/vector-icons'
+
 //   react native dependencies 
 import {
   Text,
@@ -16,7 +17,7 @@ import {
   Slider 
 } from 'react-native'
 
-import {createBottomTabNavigation, createBottomTabNavigator, createStackNavigator}  from 'react-navigation'
+import {createBottomTabNavigator, createStackNavigator}  from 'react-navigation'
 
 import DeckList from './containers/DeckList'
 import Deck from './components/Deck'
@@ -31,30 +32,32 @@ const Tabs = createBottomTabNavigator({
   DeckList : {
     screen: DeckList,
     tabBarOptions: {
-      activeTintColor: lightBlue
+      activeTintColor: lightBlue,
+      tabBarIcon: ({tintColor}) => <FontAwesome name='home' size={30} color={tintColor} />
     }
   },
 
-  Deck: {
-    screen: Deck,
-    navigationOptions: {
-      headerTintColor: lightBlue
-    }
 
-  },
  
  
   NewDeck: {
     screen: NewDeck,
-    tabBarOptions: {
-      activeTintColor: lightBlue
+   navigationOptions: {
+      activeTintColor: lightBlue, 
+      tabBarLabel: 'New Deck',
+      tabBarIcon: ({tintColor}) => <FontAwesome name='plus-square' size={30} color={tintColor} />
+
+
     }
 
   }
 })
 
 
+
+
 //   this is the main nav, which has tabs for the home screen 
+// nest the tabs in the main navigator 
 //   strong colors are just for testing purposes
 const MainNavigator = createStackNavigator({
   Home: {
@@ -68,7 +71,19 @@ const MainNavigator = createStackNavigator({
     }
   },
 
+// TODO: nav to indiv deck here, too
+//   for now I have moved this into to main nav 
+//   cuz when I have a list of decks, user can tap one 
+//   and then view it 
 
+Deck: {
+  screen: Deck,
+  navigationOptions: {
+    headerTintColor: lightBlue,
+    tabBarIcon: ({tintColor}) => <MaterialCommunityIcons name='cards-outline' size={30} color={tintColor} />
+  }
+
+},
 
   NewQuestion: {
     screen: NewQuestion,
