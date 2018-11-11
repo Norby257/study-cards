@@ -2,7 +2,7 @@
 // when you add navigation, install react-navigation 
 import React from 'react';
 import {Ionicons, FontAwesome, MaterialCommunityIcons} from '@expo/vector-icons'
-
+import {setLocalNotifications, setLocalNotification} from './utils/helpers'
 //   react native dependencies 
 import {
   Text,
@@ -104,6 +104,10 @@ Deck: {
  }
 })
 export default class App extends React.Component {
+
+  componentDidMount() {
+    setLocalNotification()
+  }
   render() {
     return (
       <View style={{ flex: 1}}>
