@@ -44,6 +44,12 @@ export function getDailyReminderValue() {
     
 }
 
+//   this gets time and converts to string 
+export function timeToString (time = Date.now()) {
+    const date = new Date(time)
+    const todayUTC = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()))
+    return todayUTC.toISOString().split('T')[0]
+  }
 
 //   notification functions   -  clear, create, and set local notification 
 
@@ -69,12 +75,13 @@ export function createNotification() {
 
 
 // setLocalNotification  => be sure to use Async storage here too  
+//   last thing here is to pass data from user / boolean 
 export function setLocalNotification() {
     AsyncStorage.getItem(NOTIFICATION_KEY)
     .then(JSON.parse)
   //     check if user did quiz 
   //     set this for 8pm every day 
-    let tomorrow = newDate()
+    let tomorrow = new Date()
     tomorrow.setDate(tomorrow.getDate() + 1)
     tomorrow.setHours(20)
     tomorrow.setMinutes(0)
