@@ -3,6 +3,9 @@
 import React from 'react';
 import {Ionicons, FontAwesome, MaterialCommunityIcons} from '@expo/vector-icons'
 import {setLocalNotifications, setLocalNotification} from './utils/helpers'
+import {createStore} from 'redux'
+import {Provider} from 'react-redux'
+
 //   react native dependencies 
 import {
   Text,
@@ -24,6 +27,7 @@ import Deck from './components/Deck'
 import Quiz from './components/Quiz'
 import NewDeck from './components/NewDeck'
 import NewQuestion from './components/NewQuestion'
+import reducer from './reducers/index'
 import {white, purple, lightBlue, darkerBlue, darkblue} from './utils/colors'
 
 
@@ -110,11 +114,13 @@ export default class App extends React.Component {
   }
   render() {
     return (
+      <Provider store={createStore(reducer)}>
       <View style={{ flex: 1}}>
         <View style={{height: 20, flex: 1}}>
         <MainNavigator />
         </View>
       </View>
+      </Provider>
     );
   }
 }
