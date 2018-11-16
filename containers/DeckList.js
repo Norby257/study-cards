@@ -1,10 +1,22 @@
 import React, {Component} from 'react'
 import {View, TouchableOpacity, Text, Platform, StyleSheet} from 'react-native'
 import {Ionicons} from '@expo/vector-icons'
-// import Deck from '../components/Deck'
+import {connect} from 'react-redux'
+import {AppLoading} from 'expo'
 import {white, purple} from '../utils/colors'
+import  {receiveDecks} from '../actions'
+import {timeToString, getDailyReminderValue} from '../utils/helpers'
 
 class DeckList extends Component {
+    // just basing this off of fitness app for now 
+    //   simple state 
+    state = {
+        ready: false
+    }
+
+    componentDidMount() {
+        const {dispatch} = this.props
+    }
     render() {
         return (
             <View style={styles.container}> 
