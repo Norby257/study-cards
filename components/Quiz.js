@@ -18,7 +18,7 @@ function CorrectButton({ onPress }) {
     <TouchableOpacity
       onPress={onPress}
       style={
-        Platform.OS === "ios" ? styles.iosSubmitBtn : styles.androidSubmitBtn
+         styles.iosSubmitBtn
       }
     >
       <Text style={styles.submitBtnTxt}> Correct </Text>
@@ -31,7 +31,7 @@ function IncorrectButton({ onPress }) {
     <TouchableOpacity
       onPress={onPress}
       style={
-        Platform.OS === "ios" ? styles.iosSubmitBtn : styles.androidSubmitBtn
+         styles.iosSubmitBtn
       }
     >
       <Text style={styles.submitBtnTxt}> Incorrect </Text>

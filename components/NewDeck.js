@@ -21,7 +21,7 @@ function AddDeck({ onPress }) {
     <TouchableOpacity
       onPress={onPress}
       style={
-        Platform.OS === "ios" ? styles.iosSubmitBtn : styles.androidSubmitBtn
+         styles.iosSubmitBtn
       }
     >
       <Text style={styles.submitBtnTxt}> Submit </Text>

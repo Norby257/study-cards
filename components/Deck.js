@@ -21,7 +21,7 @@ function AddCard  ({ onPress}) {
    
       
       style={
-        Platform.OS === "ios" ? styles.iosSubmitBtn : styles.androidSubmitBtn
+        styles.iosSubmitBtn
       }
     >
       <Text style={styles.submitBtnTxt}> Add Card </Text>
@@ -35,7 +35,7 @@ function StartQuiz({ onPress  }) {
     <TouchableOpacity
 
       style={
-        Platform.OS === "ios" ? styles.iosSubmitBtn : styles.androidSubmitBtn
+        styles.iosSubmitBtn 
       }
     >
       <Text style={styles.submitBtnTxt}> Start Quiz </Text>
