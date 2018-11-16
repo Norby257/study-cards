@@ -47,7 +47,7 @@ function AddAnswer({onChange}) {
      return (
         <TouchableOpacity
         onPress={onPress} 
-        style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}>
+        style={styles.iosSubmitBtn}>
         
          <Text style={styles.submitBtnTxt}> Submit  </Text>
          </TouchableOpacity>
