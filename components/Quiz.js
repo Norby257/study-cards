@@ -40,6 +40,12 @@ function IncorrectButton({ onPress }) {
 }
 
 class Quiz extends Component {
+
+  //   state should contain
+  //   questions f
+  //   score 
+  //   number right 
+  //  number incorrect 
   render() {
 
     const {navigation} = this.props 

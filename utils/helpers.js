@@ -8,6 +8,7 @@ import {FontAwesome, MaterialIcons, MaterialCommunityIcons} from '@expo/vector-i
 import {Notifications, Permissions} from 'expo'
 import { Notification } from 'expo';
 
+//   here is the data structure and function to retrieve the quizzes 
 
 
 // set a notification key here - also google it

@@ -20,8 +20,9 @@ import {
   Slider 
 } from 'react-native'
 
-import {createBottomTabNavigator, createStackNavigator}  from 'react-navigation'
 
+import {createBottomTabNavigator, createStackNavigator}  from 'react-navigation'
+//   components for app 
 import DeckList from './containers/DeckList'
 import Deck from './components/Deck'
 import Quiz from './components/Quiz'
@@ -29,7 +30,18 @@ import NewDeck from './components/NewDeck'
 import NewQuestion from './components/NewQuestion'
 import reducer from './reducers/index'
 import {white, purple, lightBlue, darkerBlue, darkblue} from './utils/colors'
+import { Constants } from 'expo'
 
+//   creating the status bar 
+
+function StudyCardsStatusBar({ backgroundColor, ...props}) {
+  return (
+    <View style={{backgroundColor, height: Constants.statusBarHeight}}>
+      <StatusBar translucent backgroundColor={backgroundColor} {...props} />
+  
+    </View>
+  )
+}
 
 //   this is for tab navigation at the bottom of screen 
 const Tabs = createBottomTabNavigator({
@@ -116,6 +128,8 @@ export default class App extends React.Component {
     return (
       <Provider store={createStore(reducer)}>
       <View style={{ flex: 1}}>
+      <StudyCardsStatusBar backgroundColor={lightBlue} barStyle='light-content' />
+
         <View style={{height: 20, flex: 1}}>
         <MainNavigator />
         </View>

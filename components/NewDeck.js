@@ -14,6 +14,8 @@ import { white, purple } from "../utils/colors"
 
 //   this is class component bc it updates state
 
+// this is going to be a controlled component 
+
 function AddDeck({ onPress }) {
   return (
     <TouchableOpacity

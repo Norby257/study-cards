@@ -62,6 +62,12 @@ function AddAnswer({onChange}) {
 //   class component 
 
 class NewQuestion extends Component { 
+    //   state for question and answer 
+    //   this is a controlled component 
+   state = {
+       question: '',
+       answer: ''
+   }
     render() {
         return (
             <View style={styles.container}>
