@@ -16,6 +16,12 @@ class DeckList extends Component {
 
     componentDidMount() {
         const {dispatch} = this.props
+        //   make API calls herere 
+        // ger the deck data 
+        //   updaete state 
+
+
+        //   render Item function 
     }
     render() {
         return (
@@ -72,5 +78,10 @@ const styles = StyleSheet.create({
 })
 
 
-// map state to props here 
-export default DeckList 
+// map state to props here ; include this in export default 
+function mapStateToProps(decks) {
+    return {
+        decks
+    }
+}
+export default connect(mapStateToProps) (DeckList) 
