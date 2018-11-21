@@ -43,7 +43,8 @@ class DeckList extends Component {
         }
         return (
             <View style={styles.container}> 
-              <Text> LOL </Text>
+              <Text> List of decks here </Text>
+              <Text> Clik on an indiv deck to nav to it </Text>
 
             </View> 
 

@@ -9,12 +9,26 @@ import {
 } from "react-native"
 import { Ionicons } from "@expo/vector-icons"
 import { white, purple } from "../utils/colors"
-
+import { timeToString, getDailyReminderValue, clearLocalNotification, setLocalNotification } from "../utils/helpers";
+import {submitDeck, removeDeck} from '../utils/api'
+import {addDeck} from '../actions'
 // functions add Deck
 
 //   this is class component bc it updates state
 
 // this is going to be a controlled component 
+
+
+/* 
+pseudocode for submitting a new question and adding it to the redux store 
+from helpers file - import getData function(?), timeToString, dailyreminder, clear and set notifications
+//   so for that getDataFunction comment - maybe correspond to getMetaMetricInfo via Quiz info? 
+import submit question and remove question from ../utils.api
+//   import the relevant action from actions (in this case, addQuestion)
+//  what would be in state? just title for now? 
+//   map state to props 
+//  then at end of the file - connect mapStateToProps(NewDeck)
+*/ 
 
 function AddDeck({ onPress }) {
   return (
@@ -30,11 +44,43 @@ function AddDeck({ onPress }) {
 }
 
 class NewDeck extends Component {
-  //   we can give this state but commenting out for now bc just views
-  //  constructor(props) {
-  //      super(props);
-  //      this.state = {text: ''}
-  //  }
+  state = {
+    title: ''
+  }
+
+  //  functions here => 
+  //   submit 
+  submit = () => {
+    const key = timeToString()
+    const deck = this.state
+    this.props.dispatch(addDeck({
+      [key]: deck
+    }))
+    //   update state back to blank 
+    this.setState(()=> {
+      title: ''
+    })
+    this.toHome()
+    submitDeck({key, deck})
+    clearLocalNotification()
+    .then(setLocalNotification)
+  }
+  //   reset 
+  reset = () => {
+    const key = timeToString()
+    this.props.dispatch(addDeck({
+      [key]: getDailyReminderValue()
+    }))
+    this.toHome()
+    removeDeck(key)
+  }
+  //   redirect to home? 
+
+  toHome = () => {
+    this.props.navigation.dispatch(NavigationAtcions.back({
+      key: 'NewDeck'
+    }))
+  }
   render() {
     return (
       <View style={styles.container}>
