@@ -1,15 +1,49 @@
 import React, {Component} from 'react'
 import {View, TouchableOpacity, Text, Platform, StyleSheet} from 'react-native'
 import {Ionicons} from '@expo/vector-icons'
-// import Deck from '../components/Deck'
+import {connect} from 'react-redux'
+import {AppLoading} from 'expo'
 import {white, purple} from '../utils/colors'
+import  {receiveDecks, addDeck} from '../actions'
+import {fetchDeckResults} from '../utils/api'
+import {timeToString, getDailyReminderValue} from '../utils/helpers'
 
+//   TODO 
+
+
+//   in component did mount, make your fetch results function
+//   on press, navigate to the individual deck  
+//   see History.js file from fitness app  
 class DeckList extends Component {
+    // just basing this off of fitness app for now 
+    //   simple state 
+    state = {
+        ready: false
+    }
+
+    componentDidMount() {
+        const {dispatch} = this.props
+
+        fetchDeckResults()
+        .then((decks)=> dispatch(receiveDecks(decks)))
+        .then(()=> this.setState(()=> ({ready:true})))
+        
+    }
+
+        //   render Item function 
+    renderItem = ({...decks},key) => {
+        //   make an item a button that will nav to the indiv deck 
+    }
     render() {
+        const {decks} = this.props
+        const {ready} = this.state
+
+        if (ready === false) {
+            return <AppLoading />
+        }
         return (
             <View style={styles.container}> 
-                <Text> DECK LIST GOES HERE </Text>
-                <Text> each individual DECK listed below </Text>
+              <Text> LOL </Text>
 
             </View> 
 
@@ -60,5 +94,10 @@ const styles = StyleSheet.create({
 })
 
 
-// map state to props here 
-export default DeckList 
+// map state to props here ; include this in export default 
+function mapStateToProps(decks) {
+    return {
+        decks
+    }
+}
+export default connect(mapStateToProps) (DeckList) 
