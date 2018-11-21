@@ -5,7 +5,8 @@ import {white, purple} from '../utils/colors'
 
 
 // function add question  TEXT INPUT  - onChange OR on Submit? 
-
+//   pseudocode / algorithm for adding new question may be similar 
+// to adding a new deck 
 function AddQuestion({onChange}) {
     return (
         <View style={{padding: 10}}>
