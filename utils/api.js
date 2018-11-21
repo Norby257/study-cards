@@ -8,7 +8,7 @@ export function submitDeck({deck, key}) {
         [key]: deck
     }))
 }
-//   fetch calendar results?
+//   fetch deck results?
  export function fetchDeckResults() {
      return AsyncStorage.getItem(DECK_STORAGE_KEY)
  }
