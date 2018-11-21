@@ -7,6 +7,7 @@ import {
   Platform,
   StyleSheet
 } from "react-native"
+import {connect} from 'react-redux'
 import { Ionicons } from "@expo/vector-icons"
 import { white, purple } from "../utils/colors"
 import { timeToString, getDailyReminderValue, clearLocalNotification, setLocalNotification } from "../utils/helpers";
@@ -52,7 +53,7 @@ class NewDeck extends Component {
   //   submit 
   submit = () => {
     const key = timeToString()
-    const deck = this.state
+    const title = this.state
     this.props.dispatch(addDeck({
       [key]: deck
     }))
@@ -91,11 +92,13 @@ class NewDeck extends Component {
           <TextInput
             style={{ flex: 1, height: 40, borderColor: 'gray', borderWidth: 1}}
             placeholder="Title of Deck"
+            onChangeText ={title => this.setState({title})}
 
             //   onChangeText={(text) => this.setState({text})}
+            //   fix bug with this! error on onPress 
           />
         </View>
-        <AddDeck style={styles.iosSubmitBtn} />
+        <AddDeck style={styles.iosSubmitBtn} onPress={()=> this.AddDeck(this.state)} />
       </View>
     )
   }
@@ -138,4 +141,10 @@ const styles = StyleSheet.create({
 })
 
 // export it
+//   state is undefined, fix that and then connect 
+// function mapStateToProps(state) {
+// const key = timeToString()
+// }
+// export default connect(mapStateToProps) (NewDeck)
+
 export default NewDeck
