@@ -99,3 +99,19 @@ export function setLocalNotification() {
 
 
 
+//   quiz functions go here ? 
+//   start with a metricQuizInfo function 
+export function getQuizMetaInfo(quiz) {
+    const info = {
+        score: {
+            max: 100,
+            min: 0
+        }
+    }
+}
+
+// quiz score function 
+//   icon for quiz ? 
+
+
+//   send score to reux store? 
