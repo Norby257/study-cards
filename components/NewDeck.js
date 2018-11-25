@@ -12,7 +12,7 @@ import { Ionicons } from "@expo/vector-icons"
 import { white, purple } from "../utils/colors"
 import { timeToString, getDailyReminderValue, clearLocalNotification, setLocalNotification } from "../utils/helpers";
 import {submitDeck, removeDeck} from '../utils/api'
-import {addDeck} from '../actions'
+import {addDeck} from '../actions/'
 // functions add Deck
 
 //   this is class component bc it updates state
