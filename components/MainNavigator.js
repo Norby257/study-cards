@@ -19,8 +19,9 @@ import { white, purple, lightBlue, darkerBlue, darkblue } from "../utils/colors"
 export const Tabs = createBottomTabNavigator({
   DeckList: {
     screen: DeckList,
-    tabBarOptions: {
+    navigationOptions: {
       activeTintColor: lightBlue,
+      tabBarLabel: "Home",
       tabBarIcon: ({ tintColor }) => (
         <FontAwesome name="home" size={30} color={tintColor} />
       )

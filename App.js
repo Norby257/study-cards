@@ -23,7 +23,7 @@ import {
   createStackNavigator
 } from "react-navigation"
 import { MainNavigator } from "./components/MainNavigator"
-import reducer from "./reducers/index"
+import reducer from "./reducers"
 import { white, purple, lightBlue, darkerBlue, darkblue } from "./utils/colors"
 import {StudyCardsStatusBar} from './components/StudyCardsStatusBar'
 import { Constants } from "expo"
@@ -34,6 +34,8 @@ export default class App extends React.Component {
   }
   render() {
     return (
+            //   set the initial state in the reducer 
+
       <Provider store={createStore(reducer)}>
         <View style={{ flex: 1 }}>
           <StudyCardsStatusBar
