@@ -5,13 +5,14 @@ import {
   Text,
   TextInput,
   Platform,
-  StyleSheet
+  StyleSheet,
 } from "react-native"
+import { NavigationActions} from 'react-navigation'
 import {connect} from 'react-redux'
 import { Ionicons } from "@expo/vector-icons"
 import { white, purple } from "../utils/colors"
 import { timeToString, getDailyReminderValue, clearLocalNotification, setLocalNotification } from "../utils/helpers";
-import {submitDeck, removeDeck} from '../utils/api'
+import {submitDeck, removeDeck, fetchDeckResults} from '../utils/api'
 import {addDeck} from '../actions/'
 // functions add Deck
 
@@ -49,24 +50,26 @@ class NewDeck extends Component {
     title: ''
   }
 
-  //  functions here => 
-  //   submit 
+  //  functions here
+  //   submit  function
   submit = () => {
+    // define deck here 
     const key = timeToString()
-    const title = this.state
+    // const title = this.state
+    const deck = this.state
     this.props.dispatch(addDeck({
       [key]: deck
     }))
     //   update state back to blank 
     this.setState(()=> {
-      title: ''
+      deck: ''
     })
     this.toHome()
     submitDeck({key, deck})
-    clearLocalNotification()
-    .then(setLocalNotification)
+    // clearLocalNotification()
+    // .then(setLocalNotification)
   }
-  //   reset 
+  //   reset function
   reset = () => {
     const key = timeToString()
     this.props.dispatch(addDeck({
@@ -75,14 +78,15 @@ class NewDeck extends Component {
     this.toHome()
     removeDeck(key)
   }
-  //   redirect to home? 
-
+  //   TODO: fix the undefined is not an object
+//  
   toHome = () => {
-    this.props.navigation.dispatch(NavigationAtcions.back({
+    this.props.navigation.dispatch(NavigationActions.back({
       key: 'NewDeck'
     }))
   }
   render() {
+    const decks = fetchDeckResults()
     return (
       <View style={styles.container}>
         <View style={styles.row}>
@@ -98,7 +102,7 @@ class NewDeck extends Component {
             //   fix bug with this! error on onPress 
           />
         </View>
-        <AddDeck style={styles.iosSubmitBtn} onPress={()=> this.AddDeck(this.state)} />
+        <AddDeck style={styles.iosSubmitBtn} onPress={()=> this.submit(this.state)} />
       </View>
     )
   }
@@ -140,11 +144,10 @@ const styles = StyleSheet.create({
   }
 })
 
-// export it
-//   state is undefined, fix that and then connect 
-// function mapStateToProps(state) {
-// const key = timeToString()
-// }
-// export default connect(mapStateToProps) (NewDeck)
 
-export default NewDeck
+
+function mapStateToProps(state) {
+  return state
+
+}
+export default connect(mapStateToProps) (NewDeck)
